@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .calculator-container {
+            background: #eca7e3;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin-right: 20px; 
+        }
+        .calculator-container h1 {
+            text-align: left;
+            color: #333;
+        }
+        .calculator-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .calculator-container input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .calculator-container .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .calculator-container button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .calculator-container button[type="submit"] {
+            background-color: #1ba1e2;
+        }
+        .calculator-container button[type="button"] {
+            background-color: #1ba1e2;
+        }
+        .calculator-container p {
+            background-color: #d3d3d3;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="calculator-container">
+    <h1>multiplicacion</h1>
+    <form id="calculator-form" th:action="@{/calculadora/multiplicacion}" method="post">
+        <label for="num1">Numero 1:</label>
+        <input type="number" id="num1" name="num1" th:value="${num1}"><br>
+
+        <label for="num2">Numero 2:</label>
+        <input type="number" id="num2" name="num2" th:value="${num2}"><br>
+
+        <label for="result">Resultado:</label>
+        <input type="number" id="result" name="result" disabled th:value="${result}"><br>
+
+        <div class="button-container">
+            <button type="submit">Calcular</button>
+            <button type="button" onclick="clearForm()">Limpiar</button>
+        </div>
+    </form>
+</div>
+<script>
+    function clearForm() {
+        document.getElementById('calculator-form').reset();
+        document.getElementById('num1').value = '';
+        document.getElementById('num2').value = '';
+        document.getElementById('result').value = '';
+    }
+</script>
+</body>
+</html>
